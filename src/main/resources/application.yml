@@ -1,5 +1,7 @@
 #  https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.4-Release-Notes
 spring:
+  application:
+    name: toby-excersice-springboot
   config:
     import:
     - email.properties
