@@ -1,0 +1,73 @@
+#  https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.4-Release-Notes
+spring:
+  config:
+    import:
+    - email.properties
+#    - mysql_db.properties
+    - postgresql_db.properties
+    activate:
+      on-profile: default
+
+##############################################
+#  Data Source 설정(Mysql? Postgresql)
+############################################
+  datasource:
+    url: ${datasource.url}
+    username: ${datasource.username}
+    password: ${datasource.password}
+    driver-class-name: ${datasource.driver-class-name}
+
+##############################################
+#  Data Jpa 관련 설정
+############################################
+  jpa:
+    database-platform: ${jpa.database-platform}
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+
+##############################################
+#  Springboot Mail
+############################################
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${emaill.spring.mail.username}
+    password: ${emaill.spring.mail.password}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
+##############################################
+#  Springboot admin
+############################################
+  boot:
+    admin:
+      client:
+        url: http://localhost:8090
+        instance:
+          service-url: http://localhost:8080
+
+##############################################
+#  Spring boot actuator
+############################################
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always
+
+###########################################
+#    loggin level
+##########################################
+logging:
+  level:
+    org:
+      hibernate: DEBUG

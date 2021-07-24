@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel='stylesheet' th:href='@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}'>
+    <!-- Page level plugin CSS-->
+    <th:block layout:fragment="contentsCss">
+        <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+        <script src="/webjars/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="/webjars/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    </th:block>
+</head>
+<!-- HTML Body Tag 내 Header 구성 -->
+<header th:fragment="header">
+    <nav class="navbar navbar-inverse">
+        <a class="navbar-brand" href="/board/list">메인</a>
+    </nav>
+</header>
+</html>

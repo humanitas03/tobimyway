@@ -1,0 +1,57 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+
+dependencies {
+//    implementation 'org.springframework.boot:spring-boot-starter-web' // Web MVC
+    implementation 'org.springframework.boot:spring-boot-starter-webflux' // Reactive Web
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-client', version: '2.4.3'
+
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+
+    implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.4.1'
+    implementation group: 'org.webjars', name: 'bootstrap', version: '4.4.1'
+    implementation group: 'org.webjars', name: 'jquery', version: '3.3.1'
+    implementation group: 'org.webjars', name: 'webjars-locator', version: '0.41'
+
+
+    // DB
+    implementation 'mysql:mysql-connector-java' // mysql
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23' // postgresql
+
+    testImplementation 'com.h2database:h2'
+    testImplementation 'org.projectlombok:lombok'
+    testImplementation group: 'org.mockito', name: 'mockito-all', version: '2.0.2-beta'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}

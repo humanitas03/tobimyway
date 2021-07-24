@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/layout/layout.html">
+
+<head>
+    <title>Form</title>
+    <link rel='stylesheet' th:href='@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}'>
+    <th:block layout:fragment="contentsCss">
+    </th:block>
+</head>
+
+<body>
+
+<div class="container" layout:fragment="content">
+    <div class="page-header">
+        <!--
+            <h1 th:if="!${board?.idx}">게시글 등록</h1>
+            <h1 th:if="${board?.idx}">게시글 상세</h1>
+        -->
+        <h1>유저 등록</h1>
+    </div>
+    <br/>
+
+    <table class="table">
+        <tr>
+            <th style="padding:13px 0 0 15px;">이름</th>
+            <td>
+                <input id="userName" type="text" class="form-control input-sm"/>
+            </td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;">비밀번호</th>
+            <td>
+                <input id="password" type="password" class="form-control input-sm"/>
+            </td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;">이메일</th>
+            <td>
+                <input id="email" type="text" class="form-control input-sm"/>
+            </td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;">레벨</th>
+            <td>
+                <input id="level" type="text" class="form-control input-sm"/>
+            </td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;">로그인수</th>
+            <td>
+                <input id="login" type="text" class="form-control input-sm"/>
+            </td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;">추천수</th>
+            <td>
+                <input id="recommend" type="text" class="form-control input-sm"/>
+            </td>
+        </tr>
+    </table>
+
+    <!-- 목록으로 -->
+    <div class="pull-left">
+        <a href="/index.html" class="btn btn-success">목록으로</a>
+    </div>
+    <!-- 저장/수정/삭제 버튼 -->
+    <div class="pull-right">
+        <button  type="button" class="btn btn-primary" id="insert">
+            저장
+        </button>
+    </div>
+
+</div>
+
+<th:block layout:fragment="contentsScript">
+</th:block>
+
+<th:block layout:fragment="customScript">
+    <!-- 신규 등록 -->
+    <script>
+        // 저장버튼
+        $("#insert").click(function() {
+            var jsonData = JSON.stringify({
+                name : $("#userName").val(),
+                password : $("#password").val(),
+                email: $("#email").val(),
+                level : $("#level").val(),
+                login : $("#login").val(),
+                recommend: $("#recommend").val(),
+            });
+            $.ajax({
+                url : "http://localhost:8080/board/user",
+                type : "POST",
+                data : jsonData,
+                contentType : "application/json",
+                dataType : "json",
+                success : function() {
+                    alert("저장 성공!");
+                    location.href = "/board/list";
+                },
+                error : function() {
+                    alert("저장 실패!");
+                }
+            });
+        });
+    </script>
+
+</th:block>
+</body>
+</html>
