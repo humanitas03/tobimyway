@@ -21,8 +21,8 @@ repositories {
 
 
 dependencies {
-//    implementation 'org.springframework.boot:spring-boot-starter-web' // Web MVC
-    implementation 'org.springframework.boot:spring-boot-starter-webflux' // Reactive Web
+    implementation 'org.springframework.boot:spring-boot-starter-web' // Web MVC
+//    implementation 'org.springframework.boot:spring-boot-starter-webflux' // Reactive Web
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
