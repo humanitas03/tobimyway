@@ -37,3 +37,4 @@ out/
 .vscode/
 
 **/email.properties
+**/docker/postresql/**
